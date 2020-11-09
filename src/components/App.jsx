@@ -5,16 +5,20 @@ import GameBar from './GameBar'
 const App = () => {
     const [players, setPlayers] = useState(2)
     const [maxScore, setMaxScore] = useState(10)
+    const [isStarted, setStart] = useState(false)
 
 
-    const setPlayersNCount = (players) => setPlayers(players)
+    const setPlayersNCount = (playersCount) => setPlayers(playersCount)
     
     const setScore = (score) => setMaxScore(score)
 
-    return <>
-                <Menu setPlayersNCount={setPlayersNCount} setScore={setScore} maxScore={maxScore} players={players}/>
-                <GameBar players={players} maxScore={maxScore}/>
-            </>
+    const startGame = () => setStart(true)
+    
+
+    const game = isStarted ? 
+                        <GameBar players={players} maxScore={maxScore}/> : 
+                        <Menu setPlayersNCount={setPlayersNCount} setScore={setScore} maxScore={maxScore} players={players} startGame={startGame}/>
+    return game
             
 }
 

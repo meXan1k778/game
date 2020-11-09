@@ -96,7 +96,7 @@ const GameBar = ({maxScore, players}) =>{
         <div className="head main">
             <h4>players count: {players}</h4>
             {element}
-            <h4>maxScore: {maxScore}</h4></div>
+            <h4>max Score: {maxScore}</h4></div>
         <div className="body main">
             <div className="player-data">
                 <span>current player: {currentPlayer}</span>

@@ -2,11 +2,7 @@
 import React from 'react';
 import './menu.scss';
 
-const Menu = ({setPlayersNCount, setScore, maxScore, players}) => {
-
-const startGame = () => {
-    console.log(players) 
-}
+const Menu = ({setPlayersNCount, setScore, maxScore, players, startGame}) => {
 
     return <div className="container">
         <button type="button" onClick={startGame}>Start</button>

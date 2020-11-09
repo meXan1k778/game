@@ -1,10 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 .container {
   min-width: 320px;
-  height: 350px;
+  height: 100vh;
   background-color: aquamarine;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  overflow-y: hidden;
   button {
     background-color: orange;
     padding: 10px;
