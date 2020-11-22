@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import Speedometer from './Speedometer';
 import ClosedBar from './ClosedBar';
 import EndGame from './EndGame';
+import spd from '../img/Spd-scale.jpg';
 
 import Cards from './CardsData'
 import './gamebar.scss';
@@ -35,7 +37,7 @@ const GameBar = ({maxScore, players}) =>{
     }
 
     useEffect(() => {
-        setRandom(Math.floor(Math.random() * 100 + 1))
+        setRandom(Math.floor(Math.random() * 180 + 1))
         initialScore(players)
     }, [])
 
@@ -73,13 +75,11 @@ const GameBar = ({maxScore, players}) =>{
         if(currentPlayer + 1 <= players){
             setCurrentPLayer(currentPlayer + 1)
         } else setCurrentPLayer(1)
-        setRandom(Math.floor(Math.random() * 100 + 1))
+        setRandom(Math.floor(Math.random() * 180 + 1))
         setEndRound(!isEndRound)
     }
 
-    
-
-    const element = isOpen ? <div className="speedometer"><Speedometer rnd={randomNum} result={result} answerText={answerText}/></div> : <ClosedBar helpText={helpText} setAnswerText={setAnswerText}/>
+    const element = isOpen ? <SpeedBar rnd={randomNum}><Speedometer rnd={randomNum} result={result} answerText={answerText}/></SpeedBar> : <ClosedBar helpText={helpText} setAnswerText={setAnswerText}/>
 
     let prompt = <button />
     if (!isOpen){
@@ -111,5 +111,29 @@ const GameBar = ({maxScore, players}) =>{
         </div>
     </div>
 }
+
+const SpeedBar = styled.div`
+    background-color: red;
+    box-sizing: border-box;
+    background: url(${spd}) no-repeat 50% 50%;
+    width: 70%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-size: contain;
+    animation: spd 5s linear 1 forwards;
+  
+  @keyframes spd {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(${prop => prop.rnd}deg);
+      }
+  }
+`
 
 export default GameBar
