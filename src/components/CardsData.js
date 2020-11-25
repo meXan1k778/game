@@ -1,5 +1,7 @@
 
-const Cards = [['good', 'bad'], ['happy','sad'], ['excited', 'bored']]
+import cardSetStandart from '../data/cardSetStandart.json';
+
+const {Cards} = cardSetStandart
 
 export default Cards
   

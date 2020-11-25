@@ -79,7 +79,7 @@ const GameBar = ({maxScore, players}) =>{
         setEndRound(!isEndRound)
     }
 
-    const element = isOpen ? <SpeedBar rnd={randomNum}><Speedometer rnd={randomNum} result={result} answerText={answerText}/></SpeedBar> : <ClosedBar helpText={helpText} setAnswerText={setAnswerText}/>
+    const element = isOpen ? <SpeedBar rnd={randomNum}><Speedometer rnd={randomNum} result={result} answerText={answerText}/></SpeedBar> : <ClosedBar helpText={helpText} answerText={answerText} setAnswerText={setAnswerText}/>
 
     let prompt = <button />
     if (!isOpen){
@@ -102,7 +102,7 @@ const GameBar = ({maxScore, players}) =>{
                 <span>current player: {currentPlayer}</span>
                 <span>score: {allPlayersPoints[currentPlayer-1]}</span>
             </div>
-            <div className="card">{currentCard}</div>
+            <div className="card">{currentCard.LeftValue} : {currentCard.RightValue}</div>
             <div className="prompt">
                {isOpen && !isEndRound && <input type="text" onChange={(e) => setHelpText(e.target.value)} value={helpText}/>}
                 {prompt}
